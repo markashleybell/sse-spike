@@ -1,0 +1,12 @@
+﻿@model Broadcast
+
+<h2>Broadcast Message</h2>
+
+<form asp-action="Broadcast" asp-controller="Api" id="broadcast">
+    <input type="text" id="messagetext" name="messagetext" />
+    <button type="submit">Broadcast</button>
+</form>
+
+@section scripts {
+    <script src="~/js/broadcast.js" asp-append-version="true"></script>
+}

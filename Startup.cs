@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using sse_spike.Infrastructure;
 
 namespace sse_spike
 {
@@ -11,8 +12,12 @@ namespace sse_spike
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services) =>
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IMessageHub, MessageHub>();
+
             services.AddControllersWithViews();
+        }
 
         public void Configure(IApplicationBuilder app)
         {

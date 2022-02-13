@@ -1,12 +1,12 @@
 ﻿window.addEventListener('load', function (e) {
 
-    var output = document.getElementById('messages');
+    const output = document.getElementById('messages');
 
     function writeMessage(message) {
         output.innerText += message + '\r\n';
     }
 
-    var source = new EventSource('/api/sse');
+    const source = new ReconnectingEventSource('/api/subscribe');
 
     source.onmessage = function (event) {
         console.log('onmessage', event);
